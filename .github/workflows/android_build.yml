@@ -16,16 +16,23 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '17'
+
+      - name: Create local.properties
+        run: |
+          echo "INSTAGRAM_ID=${{ secrets.INSTAGRAM_ID }}" >> local.properties
+          echo "YOUTUBE_ID=${{ secrets.YOUTUBE_ID }}" >> local.properties
+          echo "LINKEDIN_ID=${{ secrets.LINKEDIN_ID }}" >> local.properties
+          echo "SNAPCHAT_ID=${{ secrets.SNAPCHAT_ID }}" >> local.properties
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
       - name: Build Debug APK
-        run: ./gradlew assembleDebug --stacktrace --info
+        run: ./gradlew assembleDebug
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v4
