@@ -33,10 +33,10 @@ android {
 		val linkedinId = properties.getProperty("LINKEDIN_ID") ?: ""
 		val snapchatId = properties.getProperty("SNAPCHAT_ID") ?: ""
 
-		buildConfigField("String", "INSTAGRAM_ID", instagramId)
-		buildConfigField("String", "YOUTUBE_ID", youtubeId)
-		buildConfigField("String", "LINKEDIN_ID", linkedinId)
-		buildConfigField("String", "SNAPCHAT_ID", snapchatId)
+		buildConfigField("String", "INSTAGRAM_ID", "\"$instagramId\"")
+		buildConfigField("String", "YOUTUBE_ID", "\"$youtubeId\"")
+		buildConfigField("String", "LINKEDIN_ID", "\"$linkedinId\"")
+		buildConfigField("String", "SNAPCHAT_ID", "\"$snapchatId\"")
 	}
 
 	buildTypes {
